@@ -11,6 +11,6 @@ Empathetic Chatbot: AI-driven conversations providing awareness and support.
 
 Chat Session CRUD: Create, view, update, and delete stored chat sessions.
 
-Twitter Data Integration: (Planned) Leverage sentiment trends for chatbot responses.
+Twitter Data Integration: Leverage sentiment trends for chatbot responses.
 
- Geolocation Support: (Planned) Recommend nearby safe centers and GBV resources.
+ Geolocation Support: Recommend nearby safe centers and GBV resources.
