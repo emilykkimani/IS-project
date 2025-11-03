@@ -44,7 +44,7 @@ To create an intelligent, accessible, and emotionally aware digital companion th
 | Layer | Tools / Frameworks |
 |-------|--------------------|
 | **Frontend** | SwiftUI (iOS) |
-| **Backend (Planned)** | REST API / Flask / FastAPI |
+| **Backend** | Overpass API / Flask / FastAPI |
 | **AI Integration** | Sentiment Analysis (Transformers, Hugging Face) |
 | **Persistence** | Core Data / SQLite |
 | **Architecture** | MVVM |
