@@ -364,3 +364,4 @@ struct LogoutButton: View {
 #Preview {
     UserProfileView()
 }
+

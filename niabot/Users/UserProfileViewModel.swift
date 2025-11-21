@@ -76,3 +76,4 @@ class UserProfileViewModel: ObservableObject {
         UserDefaults.standard.removeObject(forKey: "soundEnabled")
     }
 }
+
