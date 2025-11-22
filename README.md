@@ -51,5 +51,45 @@ To create an intelligent, accessible, and emotionally aware digital companion th
 | **Design Focus** | Accessibility, Inclusivity & Emotional Sensitivity |
 
 ---
+## Project Structure
+
+``` bash
+NiaBot/
+├── NiaBotApp.swift
+├── Models/
+│   ├── Message.swift
+│   ├── ChatSession.swift
+│   └── User.swift
+├── ViewModels/
+│   ├── AuthViewModel.swift
+│   ├── ChatViewModel.swift
+│   ├── SessionViewModel.swift
+│   └── ProfileViewModel.swift
+├── Views/
+│   ├── Auth/
+│   │   ├── LoginView.swift
+│   │   ├── SignupView.swift
+│   │   └── OTPVerificationView.swift
+│   ├── Chat/
+│   │   ├── ChatbotView.swift
+│   │   ├── SavedChatsView.swift
+│   │   └── MessageRow.swift
+│   ├── Profile/
+│   │   └── ProfileView.swift
+│   └── Shared/
+│       ├── SidebarView.swift
+│       └── LoadingIndicator.swift
+├── Services/
+│   ├── AIService.swift
+│   ├── APIClient.swift
+│   └── CoreDataManager.swift
+├── CoreData/
+│   ├── NiaBot.xcdatamodeld
+│   └── Persistence.swift
+└── Resources/
+    ├── Assets.xcassets
+    └── AppIcon.appiconset
+```
+---
 
 
