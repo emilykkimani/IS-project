@@ -94,7 +94,7 @@ NiaBot/
 
 ## Dataset & Model Training
 
-### ### Twitter GBV Dataset
+### Twitter GBV Dataset
 NiaBot uses a curated dataset of GBV-related tweets (2020–2024), annotated into:
 
 - `sexual_violence`  
@@ -127,7 +127,7 @@ NiaBot uses **two ML models**:
 **Base Model:** `bert-base-multilingual-cased`  
 **Purpose:** Classify tweets into multiple GBV categories.
 
-### 🔧 Training Configuration
+###  Training Configuration
 - Learning Rate: **3e-5**  
 - Batch Size: **16**  
 - Epochs: **3**  
@@ -154,7 +154,7 @@ mBERT achieved high accuracy in distinguishing distress-oriented tweets, improvi
 
 **Purpose:** Generate empathetic conversations and educational guidance.
 
-### 🔧 Training Configuration
+###  Training Configuration
 - Fine-tuning Method: **LoRA**  
 - Learning Rate: **2e-4**  
 - Batch Size: **2**  
