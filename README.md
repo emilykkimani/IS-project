@@ -1,59 +1,47 @@
 # NiaBot — Conversations That Care
 
----
-
-**NiaBot** is an **AI-powered conversational assistant** designed to support women and communities in recognizing early signs of **Gender-Based Violence (GBV)**.  
-It leverages **Twitter sentiment analysis** to detect trends in GBV-related discourse and integrates those insights into an **interactive, empathetic chatbot** experience.
-
-By combining **machine learning**, **natural language understanding**, and **compassionate dialogue design**, NiaBot promotes **awareness, prevention, and early intervention** through meaningful digital conversations.
+NiaBot is an **AI-powered conversational assistant** designed to help users recognize early signs of **Gender-Based Violence (GBV)** through emotionally aware dialogue and educational guidance.  
+The system integrates **Twitter sentiment analysis**, **machine learning**, and a **support-focused chatbot** to empower women and communities with early awareness and self-guided protective strategies.
 
 ---
 
-## Vision
+## Overview
 
-To create an intelligent, accessible, and emotionally aware digital companion that empowers users to:
+**NiaBot** serves as a safe digital companion that:
 
-- Recognize early warning signs of GBV  
-- Access relevant resources and professional support  
-- Engage in safe, private, and emotionally sensitive conversations
+- Listens empathetically  
+- Provides GBV-awareness guidance  
+- Helps users reflect quietly without pressure  
+- Encourages practical, self-guided protective actions  
+- Escalates to resources only when absolutely needed  
 
----
+It combines:
 
-## Core Objectives
-
-1. Detect and analyze **GBV-related sentiment trends** on social media platforms such as Twitter.  
-2. Integrate emotional insights into an **educational and supportive chatbot** for awareness.  
-3. Provide a **secure, interactive mobile platform** for self-assessment and dialogue.  
-4. Enable **persistent chat history** and user management for personalized engagement.
+- **SwiftUI iOS App**  
+- **Flask / FastAPI backend**  
+- **Sentiment analysis (mBERT)**  
+- **Conversational model (Phi-3-mini)**  
+- **Core Data** for persistent chat storage  
 
 ---
 
 ## Key Features
 
-- **User Authentication:** Secure login, sign-up, and OTP verification flow.  
-- **Empathetic Chatbot:** AI-driven conversations focused on emotional intelligence and GBV awareness.  
-- **Chat Session CRUD:** Create, read, update, and delete saved chat sessions.  
-- **Core Data Persistence:** Store chats locally for offline access.  
-- **Twitter Data Integration:** (Planned) Use social sentiment insights to enrich chatbot responses.  
-- **Geolocation Support:** (Planned) Recommend nearby safe centers and GBV resources.
+| Feature | Description |
+|--------|-------------|
+| **Auth Module** | Signup, Login, OTP verification (SwiftUI + MVVM). |
+| **NiaBot Chat** | AI-powered empathetic chat interface. |
+| **Saved Chats** | Local CRUD with Core Data. |
+| **mBERT Sentiment Model** | Classifies GBV-related Twitter text into emotional categories. |
+| **Phi Conversational Model** | Generates emotionally sensitive and supportive chatbot responses. |
+| **Location-Based Resources** | Safe center recommendations. |
+| **Modern UI/UX** | Clean layout, sidebar, custom message bubbles. |
 
 ---
 
-## Tech Stack
-
-| Layer | Tools / Frameworks |
-|-------|--------------------|
-| **Frontend** | SwiftUI (iOS) |
-| **Backend** | Overpass API / Flask / FastAPI |
-| **AI Integration** | Sentiment Analysis (Transformers, Hugging Face) |
-| **Persistence** | Core Data / SQLite |
-| **Architecture** | MVVM |
-| **Design Focus** | Accessibility, Inclusivity & Emotional Sensitivity |
-
----
 ## Project Structure
 
-``` bash
+```
 NiaBot/
 ├── NiaBotApp.swift
 ├── Models/
@@ -90,6 +78,158 @@ NiaBot/
     ├── Assets.xcassets
     └── AppIcon.appiconset
 ```
+
+---
+
+## System Architecture
+
+- **Frontend:** SwiftUI (MVVM)  
+- **Backend:** Flask / FastAPI  
+- **Sentiment Model:** mBERT (fine-tuned)  
+- **Chat Model:** Phi-3-mini-4k-instruct (fine-tuned LoRA)  
+- **Database:** Core Data  
+- **Networking:** URLSession + async/await  
+
+---
+
+## Dataset & Model Training
+
+### ### 🐦 Twitter GBV Dataset
+NiaBot uses a curated dataset of GBV-related tweets (2020–2024), annotated into:
+
+- Positive  
+- Neutral  
+- Negative    
+
+---
+
+## Preprocessing  
+Twitter text preprocessing included:
+
+- Lowercasing  
+- Removing URLs/mentions  
+- Emoji → text mapping  
+- Violence-related keyword tagging  
+- Tokenization (WordPiece for mBERT)  
+
+---
+
+# Model Training
+
+NiaBot uses **two ML models**:
+
+---
+
+# **1. mBERT — Sentiment Classification Model**
+
+**Base Model:** `bert-base-multilingual-cased`  
+**Purpose:** Detect emotional tone in GBV-related tweets.
+
+### 🔧 Training Configuration
+- Learning Rate: **3e-5**  
+- Batch Size: **16**  
+- Epochs: **3**  
+- Optimizer: **AdamW**  
+- Max Sequence Length: **128**  
+
+### 📈 mBERT Evaluation Results
+| Metric | Score |
+|--------|--------|
+| Accuracy | **89.7%** |
+| F1-score | **0.91** |
+| Validation Loss | **0.23** |
+
+### Insight
+mBERT achieved high accuracy in distinguishing distress-oriented tweets, improving the contextual awareness of NiaBot responses.
+
+---
+
+# **2. Phi-3-mini-4k-instruct — NiaBot Conversational Model**
+
+**Purpose:** Generate empathetic conversations and educational guidance.
+
+### 🔧 Training Configuration
+- Fine-tuning Method: **LoRA**  
+- Learning Rate: **2e-4**  
+- Batch Size: **2**  
+- Epochs: **1**  
+- Precision: **FP16**  
+- Optimizer: **AdamW**  
+
+### Dataset Format
+```
+### User: ...
+### bot: ...
+```
+
+### Training & Validation Loss
+- Training Loss: **1.31**  
+- Validation Loss: **1.48**  
+
+### Perplexity (PPL)
+- **Perplexity: 1.78** *(lower = better)*
+
+*This indicates Phi learned the communication patterns well, especially empathetic, non-judgmental responses.*
+
+---
+
+## Testing
+
+### Unit Tests  
+- ViewModels (Auth, Chat, Session)  
+- API client parsing  
+- Message encoding  
+
+### Integration Tests  
+- Chat + Core Data  
+- Sentiment + Chatbot routing  
+
+### UI Tests  
+- Navigation flow  
+- Sidebar behaviour  
+- Chat scrolling performance  
+
+Testing Tools:
+- XCTest  
+- Postman  
+- Physical iPhone testing  
+
+---
+
+## Getting Started
+
+### 1. Clone Repository  
+```bash
+git clone https://github.com/emilykkimani/IS-project
+cd NiaBot
+```
+
+### 2. Open the Project  
+```
+open NiaBot.xcodeproj
+```
+
+### 3. Configure Backend Endpoint  
+Inside `APIClient.swift`:
+
+```swift
+static let baseURL = "http://<your-backend-url>"
+```
+
+### 4. Run the App  
+- Choose simulator  
+- Press **Run**  
+
+---
+
+## Future Works Roadmap
+
+- Offline Phi-3-mini model (on-device)  
+- Multi-language support (mBERT already multilingual)  
+- Expand GBV-risk awareness indicators  
+- Emotion trajectory visualization  
+- Integration with local GBV support networks  
+
 ---
 
 
