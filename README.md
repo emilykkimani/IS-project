@@ -97,9 +97,11 @@ NiaBot/
 ### ### Twitter GBV Dataset
 NiaBot uses a curated dataset of GBV-related tweets (2020–2024), annotated into:
 
-- Positive  
-- Neutral  
-- Negative    
+- `sexual_violence`  
+- `Physical_violence`  
+- `emotional_violence`  
+- `Harmful_Traditional_practice`  
+- `economic_violence`    
 
 ---
 
@@ -123,7 +125,7 @@ NiaBot uses **two ML models**:
 # **1. mBERT — Sentiment Classification Model**
 
 **Base Model:** `bert-base-multilingual-cased`  
-**Purpose:** Detect emotional tone in GBV-related tweets.
+**Purpose:** Classify tweets into multiple GBV categories.
 
 ### 🔧 Training Configuration
 - Learning Rate: **3e-5**  
@@ -132,12 +134,16 @@ NiaBot uses **two ML models**:
 - Optimizer: **AdamW**  
 - Max Sequence Length: **128**  
 
-### 📈 mBERT Evaluation Results
-| Metric | Score |
-|--------|--------|
-| Accuracy | **89.7%** |
-| F1-score | **0.91** |
-| Validation Loss | **0.23** |
+#### Per-Label Evaluation Metrics
+
+| Label | Precision | Recall | F1-score |
+|-------|-----------|--------|----------|
+| sexual_violence | 0.89 | 0.86 | 0.87 |
+| Physical_violence | 0.87 | 0.84 | 0.85 |
+| emotional_violence | 0.91 | 0.88 | 0.89 |
+| Harmful_Traditional_practice | 0.86 | 0.80 | 0.83 |
+| economic_violence | 0.90 | 0.82 | 0.86 |
+
 
 ### Insight
 mBERT achieved high accuracy in distinguishing distress-oriented tweets, improving the contextual awareness of NiaBot responses.
