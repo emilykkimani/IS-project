@@ -94,7 +94,7 @@ NiaBot/
 
 ## Dataset & Model Training
 
-### ### 🐦 Twitter GBV Dataset
+### ### Twitter GBV Dataset
 NiaBot uses a curated dataset of GBV-related tweets (2020–2024), annotated into:
 
 - Positive  
